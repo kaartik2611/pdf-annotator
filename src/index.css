@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title{
+    @apply bg-orange-600 text-black !important;
+}
+.author{
+    @apply bg-green-300 text-black !important;
+}
