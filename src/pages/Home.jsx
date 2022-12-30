@@ -16,7 +16,7 @@ function Home({ setUrl }) {
           onClick={() => {
             updateUrl("https://arxiv.org/pdf/2212.08011.pdf");
           }}
-          className="w-60 border-2 my-2 rounded-md"
+          className="w-60 border-2 border-neutral-400 my-2 rounded-md hover:bg-neutral-400 text-neutral-800"
         >
           Sample Document 1.pdf
         </button>
@@ -24,7 +24,7 @@ function Home({ setUrl }) {
           onClick={() => {
             updateUrl("https://arxiv.org/pdf/2212.07937.pdf");
           }}
-          className="w-60 border-2 my-2 rounded-md"
+          className="w-60 border-2 border-neutral-400 my-2 rounded-md hover:bg-neutral-400 text-neutral-800"
           >
           Sample Document 2.pdf
         </button>
@@ -32,7 +32,7 @@ function Home({ setUrl }) {
           onClick={() => {
             updateUrl("https://arxiv.org/pdf/2212.07931.pdf");
           }}
-          className="w-60 border-2 my-2 rounded-md"
+          className="w-60 border-2 border-neutral-400 my-2 rounded-md hover:bg-neutral-400 text-neutral-800"
         >
           Sample Document 3.pdf
         </button>
