@@ -16,7 +16,6 @@ function DocumentPage({ url }) {
     if (data) {
       setBoxes(JSON.parse(data));
     }
-    // add to canvas after load
     const jsonData = JSON.parse(data);
     if (jsonData === null || jsonData === "null" || jsonData === undefined) {
       setWaiting(false);
@@ -38,7 +37,6 @@ function DocumentPage({ url }) {
   }, [loaded]);
 
   useEffect(() => {
-    // do not update first time
     if (label === null) {
       return;
     }
@@ -51,7 +49,6 @@ function DocumentPage({ url }) {
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
-    // load true only after 20secs
     setTimeout(() => {
       setLoaded(true);
     }, 5000);
@@ -128,7 +125,6 @@ function DocumentPage({ url }) {
               pageNumber: i + 1,
             });
           }
-          // update the box
           if (span.classList.length !== 0 && labelRef.current.id !== "none") {
             const check = boxes.filter((box) => {
               return box.pageNumber === i + 1 && box.index === index;
@@ -152,21 +148,21 @@ function DocumentPage({ url }) {
   return (
     <>
       <div className="sticky top-0 w-full text-center">
-        {waiting && <p>wait for the pdf to load</p> }
+        {waiting && <p className="py-2 text-lg bg-neutral-400">Wait for the pdf to Load</p> }
       </div>
-      <div className="flex flex-row h-screen p-4">
+      <div className="flex flex-row h-screen p-4 bg-neutral-100">
         <div className="flex flex-col w-2/6">
+          <div className="bg-neutral-400 py-4 px-2">
           {!label ? (
-            <p>Select a Label to edit the pdf</p>
+            <p className="text-lg">Select any Label to Edit the PDF</p>
           ) : (
-            <p ref={labelRef} id={label}>
-              Selected Label: {label}
+            <p className="text-lg" ref={labelRef} id={label}>
+                  Selected Label: <span className="uppercase font-semibold">{label}</span>
             </p>
           )}
-          <div className="grow bg-neutral-400">
-            <div className="space-y-4">
+            <div className="space-x-4 space-y-2 flex-wrap">
               <button
-                className="bg-red-400 border-black border-2 p-2"
+                className="bg-red-400 border-red-600 hover:bg-red-600 hover:text-white rounded border-2 px-4 py-2"
                 onClick={() => {
                   setLabel("title");
                 }}
@@ -174,7 +170,7 @@ function DocumentPage({ url }) {
                 Title
               </button>
               <button
-                className="bg-green-400 border-black border-2 p-2"
+                className="bg-green-400 border-green-600 hover:bg-green-600 hover:text-white rounded border-2 px-4 py-2"
                 onClick={() => {
                   setLabel("author");
                 }}
@@ -182,7 +178,7 @@ function DocumentPage({ url }) {
                 Author
               </button>
               <button
-                className="bg-red-600 border-black border-2 p-2"
+                className="bg-red-600 border-red-800 hover:bg-red-800 text-white rounded border-2 px-4 py-2"
                 onClick={() => {
                   setLabel("none");
                 }}
@@ -191,11 +187,11 @@ function DocumentPage({ url }) {
               </button>
             </div>
           </div>
-          <p>Boxes</p>
-          <div className="grow bg-neutral-400 overflow-y-auto">
-            <div className="space-y-4">
+          <div className="grow bg-neutral-300 overflow-y-auto py-4 px-2">
+          <p className="uppercase text-xl pb-2">Boxes</p>
+            <div className="space-y-2">
               {boxes.map((box, i) => (
-                <div key={i}>
+                <div key={i} className='p-2 border border-neutral-400 rounded'>
                   <p>Label: {box.label}</p>
                   <p>Text: {box.text}</p>
                   <p>Page: {box.pageNumber}</p>
