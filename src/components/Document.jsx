@@ -28,7 +28,7 @@ function DocumentPage({ url }) {
       jsonData.map((box) => {
         const span =
           canvasReference.pages[box.pageNumber - 1].querySelectorAll("span")[
-            box.index
+          box.index
           ];
         span.classList.add(box.label);
       });
@@ -148,18 +148,18 @@ function DocumentPage({ url }) {
   return (
     <>
       <div className="sticky top-0 w-full text-center">
-        {waiting && <p className="py-2 text-lg bg-neutral-400">Wait for the pdf to Load</p> }
+        {waiting && <p className="py-2 text-lg bg-neutral-400">Wait for the pdf to Load</p>}
       </div>
       <div className="flex flex-row h-screen p-4 bg-neutral-100">
         <div className="flex flex-col w-2/6">
           <div className="bg-neutral-400 py-4 px-2">
-          {!label ? (
-            <p className="text-lg">Select any Label to Edit the PDF</p>
-          ) : (
-            <p className="text-lg" ref={labelRef} id={label}>
-                  Selected Label: <span className="uppercase font-semibold">{label}</span>
-            </p>
-          )}
+            {!label ? (
+              <p className="text-lg">Select any Label to Edit the PDF</p>
+            ) : (
+              <p className="text-lg" ref={labelRef} id={label}>
+                Selected Label: <span className="uppercase font-semibold">{label}</span>
+              </p>
+            )}
             <div className="space-x-4 space-y-2 flex-wrap">
               <button
                 className="bg-red-400 border-red-600 hover:bg-red-600 hover:text-white rounded border-2 px-4 py-2"
@@ -188,7 +188,7 @@ function DocumentPage({ url }) {
             </div>
           </div>
           <div className="grow bg-neutral-300 overflow-y-auto py-4 px-2">
-          <p className="uppercase text-xl pb-2">Boxes</p>
+            <p className="uppercase text-xl pb-2">Boxes</p>
             <div className="space-y-2">
               {boxes.map((box, i) => (
                 <div key={i} className='p-2 border border-neutral-400 rounded'>
